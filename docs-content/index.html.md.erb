@@ -22,7 +22,7 @@ a9s Redis for PCF includes the following key features:
 | Feature | Description |
 |---------|---------|
 | **On­-demand service instance provisioning** | a9s Redis for PCF deploys Redis instances automatically. Developers provision a single-VM Redis server using one `create-service` command. |
-| **Service instance isolation** | Each Redis server runs on a dedicated VM to ensure bad-neighborhood protection and align with enterprise security requirements.<br/><br/>a9s Redis for PCF uses Cloud Foundry application security groups (ASGs) to prevent network connections from unauthorized apps.
+| **Service instance isolation** | Each Redis server runs on a dedicated VM to ensure bad-neighborhood protection and align with enterprise security requirements.<br/><br/>a9s Redis for PCF uses Cloud Foundry [application security groups (ASGs)](https://docs.pivotal.io/pivotalcf/adminguide/app-sec-groups.html) to prevent network connections from unauthorized apps.
 | **Smoke tests** | A post-deployment, smoke-test errand runs basic tests against your installation, ensuring that it is configured properly. |
 | **Service instance capacity upgrade** | By updating your service plan, you can upgrade the RAM, CPU, and storage capacity for your Redis instances.  |
 | **Logging and monitoring** | Each Redis service instance provides log messages and Redis-specific metrics to one or more `syslog/graphite` endpoints. You can configure the `syslog/graphite` endpoint to receive logging and monitoring information. |
