@@ -81,9 +81,9 @@ Use **Errands** to configure the lifecycle errands that run when you install or 
 
 ##<a id="configure-service-instance"></a> Configure Service Plans
 
-The sizes and types of VMs used to provision service instances of a given service plan are specified in **IaaS Settings** of the a9s BOSH for PCF tile. For more information, see the [a9s BOSH for PCF](../a9s-bosh/installing.html) documentation.
+The sizes and types of VMs used to provision service instances of a given service plan are specified in the **Cloud Config** pane of the a9s BOSH for PCF tile. See the <em>Cloud Config</em> section of the <a href="http://docs.pivotal.io/partners/a9s-bosh/installing.html">a9s BOSH for PCF installation documentation</a> that corresponds to your IaaS.</p>
 
-See the table below for a summary of available service plans:
+The table below lists available service plans:
 
 | This plan... | Uses these a9s BOSH for PCF settings to determine VM and disk size |
 |------|-------|
@@ -150,7 +150,9 @@ $ bosh deployment /var/tempest/workspaces/default/deployments/a9s-redis-service-
 100   352  100   352    0     0  12014      0 --:--:-- --:--:-- --:--:-- 12137
 Deployment set to '/var/tempest/workspaces/default/deployments/a9s-redis-service-94443f82b52dcf333bbd.yml'</pre>
 
-6. Run `bosh run errand deployment-updater` to force the update for all existing a9s Redis for PCF instances:
+6. (Optional) Run `bosh run errand redis-smoke-­tests` to ensure that your a9s Redis for PCF installation is configured properly.
+
+7. Run `bosh run errand deployment-updater` to force the update for all existing a9s Redis for PCF instances:
 <pre class="terminal">
 $ bosh run errand deployment-updater
 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
