@@ -91,7 +91,7 @@ You can use the host and password values to connect to your database with a Redi
 
 ##<a id='deleting'></a> Delete a Service Instance
 
-<p class="note warning"><strong>Warning:</strong>This operation cannot be undone, and the data is lost when the service instance is deleted. If you want to keep your data, you must back up your database before deleting the service instance.</p>
+<p class="note warning"><strong>Warning:</strong> This operation cannot be undone, and the data is lost when the service instance is deleted. If you want to keep your data, you must back up your database before deleting the service instance.</p>
 
 Follow the steps below to unbind the service instance from all apps and then delete it.
 
@@ -111,7 +111,7 @@ my-redis-service     a9s-redis     redis-single-non-persistent-small     a9s-red
 
 This example shows that `my-redis-service` is bound to the `a9s-redis-app` app.
 
-### Unbind a Service Instance
+###<a id='unbind-instance'></a>Unbind a Service Instance
 
 Run `cf unbind-service APP-NAME INSTANCE-NAME` to unbind the service from your app:
 
