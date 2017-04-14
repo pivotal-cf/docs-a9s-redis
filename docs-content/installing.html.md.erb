@@ -39,19 +39,19 @@ To install a9s Redis for PCF, perform the following steps:
 
 After you install a9s Redis for PCF, developers can access the service in the Marketplace. For more information, see [Using a9s Redis for PCF](./using.html).
 
-##<a id="azs"></a>Assign AZs and Networks
+###<a id="azs"></a>Assign AZs and Networks
 
 Use **Assign AZs and Networks** to configure the location of service instance jobs. You should configure your network to balance cluster jobs across as many availability zones (AZs) as possible.
 
 <%= image_tag("az-and-networks.png") %>
 
-##<a id='errands'></a>Configure Errands
+###<a id='errands'></a>Configure Errands
 
 Use **Errands** to configure the lifecycle errands that run when you install or uninstall a9s Redis for PCF. For more information, see [Understanding Lifecycle Errands](https://docs.pivotal.io/tiledev/tile-errands.html).
 
 <%= image_tag("a9s-redis-for-pcf-errands.png") %>
 
-### Post-Deploy Errands
+#### Post-Deploy Errands
 
  * **Run BOSH Configurator**:
 	This errand configures a9s BOSH for PCF so that it can provision Redis service instances. When enabled, this errand uploads the required stemcells in the BOSH release. Disabling this errand may speed up the deployment of all tiles.
@@ -69,7 +69,7 @@ Use **Errands** to configure the lifecycle errands that run when you install or 
  * **Run Smoke Tests**:
  	This errand runs a series of basic tests against your a9s Redis for PCF installation to ensure that it is configured properly. The tests can take over 30 minutes.
 
-### Pre-Delete Errands
+#### Pre-Delete Errands
 
  * **Delete all a9s Redis instances**:
 	This errand deletes all a9s Redis instances that were created with `cf create-service`.
@@ -79,7 +79,7 @@ Use **Errands** to configure the lifecycle errands that run when you install or 
  * **Run Broker Deregistrar**:
 	This errand unregisters the a9s Redis for PCF service broker from the Cloud Controller and removes the a9s Redis service from Marketplace.
 
-##<a id="configure-service-instance"></a> Configure Service Plans
+###<a id="configure-service-instance"></a> Configure Service Plans
 
 The sizes and types of VMs used to provision service instances of a given service plan are specified in the **Cloud Config** pane of the a9s BOSH for PCF tile. See the <em>Cloud Config</em> section of the <a href="http://docs.pivotal.io/partners/a9s-bosh/installing.html">a9s BOSH for PCF installation documentation</a> that corresponds to your IaaS.</p>
 
@@ -90,7 +90,7 @@ The table below lists available service plans:
 |redis-single-non-persistent-small| Cloud properties for the VM Type Small<br /> Cloud properties for the Disk Type Small|
 |redis-single-non-persistent-big| Cloud properties for the VM Type Large<br /> Cloud properties for the Disk Type Big|
 
-##<a id="stemcell"></a>Configure Stemcells
+###<a id="stemcell"></a>Configure Stemcells
 
 If you want to use a stemcell other than the default, click **Stemcell**, and then click **Import Stemcell** to upload the stemcell.
 
