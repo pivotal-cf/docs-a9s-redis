@@ -38,7 +38,7 @@ To install a9s Redis for PCF, perform the following steps:
 
 2. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
 
-3. Click **Add** or **+**(depending on the PCF version) next to the uploaded a9s Redis for PCF tile in the Ops Manager
+3. Click **Add** or **+** (depending on the PCF version) next to the uploaded a9s Redis for PCF tile in the Ops Manager
 **Available Products** view to add it to your staging area.
 
 4. Click the newly added tile, and then click **Settings** to review the configuration settings.
@@ -72,14 +72,14 @@ Use **Errands** to configure the lifecycle errands that run when you install or 
  * **Run BOSH Configurator**:
   This errand configures a9s BOSH for PCF so that it can provision Redis
   service instances. When enabled, this errand uploads the required releases in
-  the a9s BOSH Director. Disabling this errand may speed up the deployment of
+  the a9s BOSH Director. Disabling this errand might speed up the deployment of
   all tiles.
 
 	<p class="note"><strong>Note</strong>: To ensure your configuration remains up-to-date, disable this errand only when necessary.</p>
 
  * **Run Template Uploader**:
   This errand is required to configure generic components that are included in a9s Redis for PCF with Redis configurations.
-	Disabling this errand may speed up the deployment of all tiles.
+	Disabling this errand might speed up the deployment of all tiles.
 
 	<p class="note"><strong>Note</strong>: To ensure your configuration remains up-to-date, disable this errand only when necessary.</p>
 
@@ -97,7 +97,7 @@ Use **Errands** to configure the lifecycle errands that run when you install or 
 
  * **Delete all a9s Redis instances**:
 	This errand deletes all a9s Redis instances that were created with `cf create-service`.
-	<p class="note warning"><strong>Warning</strong>: This task cannot be undone. All VMs of the service instances are permanently deleted. If a service instance is bound to an app or has existing service keys, the errand fails.</p>
+	<p class="note warning"><strong>WARNING</strong>: This task cannot be undone. All VMs of the service instances are permanently deleted. If a service instance is bound to an app or has existing service keys, the errand fails.</p>
 
  * **Run Broker Deregistrar**:
 	This errand unregisters the a9s Redis for PCF service broker in Elastic Runtime. It also removes the a9s Redis service from the Elastic Runtime marketplace.
@@ -108,7 +108,7 @@ You can configure the dimensions of the VMs that host the a9s Redis for PCF comp
 This configuration does not cover the dedicated Redis instances that run on VMs provided by the a9s BOSH tile for PCF.
 For more information, see [Configure Service Plan VMs](#configure-service-instance).
 
-<p class="note"><strong>Note</strong>: Pivotal recommends using a VM Type of large or greater to support the tile compilation.</p>
+<p class="note"><strong>Note</strong>: Anynines recommends using a VM Type of large or greater to support the tile compilation.</p>
 
 <%= image_tag("a9s-redis-resource-config.png") %>
 
