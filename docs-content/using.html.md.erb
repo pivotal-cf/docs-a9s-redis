@@ -136,13 +136,52 @@ Run the `cf services` command to view the deletion status.
 Once created, you can upgrade your service instance to another, larger service plan. A larger service plan provides more CPU, RAM and storage. For more information, see the  <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html#update_service" target="_blank">Update a Service Instance</a> of the _Managing Service Instances with the cf CLI_ topic.
 
 <pre class="terminal">
-$ cf update-service my-mongodb-service -p a-bigger-plan
+$ cf update-service my-redis-service -p a-bigger-plan
 </pre>
 
 Here are the plans you can upgrade to depending on the one you are currently
 using:
 
 * If you are currently using the `redis-single-small`plan, you can upgrade to `redis-single-big`plan.
+
+##<a id='redis-persitence'></a>Change RDB Persistence Settings
+
+a9s Redis for PCF supports RDB persistence with point in time snapshots.
+This setting can be changed by the user.
+
+### Default behavior
+
+| Setting | Effect |
+|---------|--------|
+| save 900 1 | Create a snapshot after 900 seconds if 1 write operations occurred. |
+| save 300 10 | Create a snapshot after 300 seconds if 10 write operations occurred. |
+| save 60 10000 | Create a snapshot after 300 seconds if 10 write operations occurred. |
+
+### Configuring RDB
+You can configure RDB according to the needs of your apps by providing customer settings. This setting must follow the original Redis configuration for RDB `-c {"snapshot": "['save 900 1', 'save 300 10']"}`.
+
+<pre class="terminal">
+  $ cf update-service my-redis-service -c {"snapshot": "['save 900 1', 'save 300 10']"}
+</pre>
+
+In this example, it will configure to snapshot Redis database according to the following rules:
+
+| Setting | Effect |
+|---------|--------|
+| save 900 1 | Create a snapshot after 900 seconds if 1 write operations occurred. |
+| save 300 10 | Create a snapshot after 300 seconds if 10 write operations occurred. |
+
+### Cache only
+You can disable snapshots and use Redis as cache only by creating the service with the following customer setting `-c '{"snapshot": "[]"}'`.
+
+The command would be:
+
+<pre class="terminal">
+  $ cf update-service my-redis-service -c {"snapshot": "[]"}
+</pre>
+
+
+For more information see the snapshot settings in the documentation of <a href="https://redis.io/topics/persistence" target="_blank">Redis Persistence</a>.
 
 ##<a id='add-graphite-endpoint'></a>Add a Graphite Endpoint
 

@@ -222,9 +222,15 @@ Started preparing deployment > Preparing deployment. Done (00:00:01)
 &nbsp;
 Errand 'deployment-updater' completed successfully (exit code 0)
 </pre>
-<p class="note"><strong>Note</strong>: Depending on the number of service instances, the Deployment Updater may take significant time to finish running. BOSH shows no logging output while the errand runs.</p>
+<p class="note"><strong>Note</strong>: Depending on the number of service instances,
+  the Deployment Updater may take significant time to finish running. BOSH shows no
+  logging output while the errand runs.</p>
 
 ##<a id='interacting-with-the-backup-manager'></a> Trigger Backups and Restores on Demand
+
+<p class="note"><strong>Note</strong>: Note that the backup service will upload a
+  copy of your .rdb file to AWS, therefore backup will only work if your have RDB configured.
+  See <a href="./using.html#redis-persitence" target="_blank">Change RDB Persistence Settings</a> for more information. </p>
 
 Only PCF administrators can interact with the Backup Manager
 endpoints to trigger immediate backups and restores of backups.
