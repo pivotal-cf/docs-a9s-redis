@@ -24,7 +24,7 @@ This comprises the **a9s Consul DNS for PCF** tile and the **a9s BOSH for PCF** 
 
 The a9s Consul DNS for PCF tile is required because it is responsible
 for providing an internal DNS system to the other a9s service tiles, the a9s
-MongoDB for PCF included.
+Redis for PCF included.
 For more information about this tile,
 see [The Purpose of the a9s Consul DNS for PCF Tile](https://docs.pivotal.io/partners/a9s-consul-dns/usecase.html).
 
@@ -117,7 +117,7 @@ For more information, see [Understanding Lifecycle Errands](https://docs.pivotal
 
  * **Delete all a9s Redis instances**:
   This errand deletes all a9s Redis instances that were created with `cf create-service`.
-  <p class="note warning"><strong>WARNING</strong>: This task cannot be undone. All VMs of the service instances are permanently deleted. If a service instance is bound to an app or has existing service keys, the errand fails.</p>
+  <p class="note warning"><strong>WARNING</strong>: This task cannot be undone. All VMs of the service instances are permanently deleted. If a service instance is bound to an application or has existing service keys, the errand fails.</p>
 
  * **Run Broker Deregistrar**:
   This errand unregisters the a9s Redis for PCF service broker in Elastic Runtime. It also removes the a9s Redis service from the Elastic Runtime marketplace.
