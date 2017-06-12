@@ -7,8 +7,8 @@ This topic describes how to use a9s Redis for PCF after it has been successfully
 
 ##<a id='using'></a>Use a9s Redis for PCF with an App
 
-To use a9s Redis for PCF with an application, create a service instance and bind the service instance
-to your application. For more information on managing service instances, see <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html" target="_blank">Managing Service Instances with the cf CLI</a>.
+To use a9s Redis for PCF with an app, create a service instance and bind the service instance
+to your app. For more information on managing service instances, see <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html" target="_blank">Managing Service Instances with the cf CLI</a>.
 
 ###<a id='view-service'></a> View the a9s Redis for PCF Service
 
@@ -35,21 +35,21 @@ Depending on your infrastructure and service broker utilization, it may take sev
 
 Run the `cf services` command to view the creation status. This command displays a list of all your service instances. To view the status of a specific service instance, run `cf service NAME-OF-YOUR-SERVICE`.
 
-### Bind an Application to a Service Instance
+### Bind an App to a Service Instance
 
-After your database is created, run `cf bind-service` to bind the service to your application:
+After your database is created, run `cf bind-service` to bind the service to your app:
 
 <pre class="terminal">
 $ cf bind-service a9s-redis-app my-redis-service
 </pre>
 
-###<a id='restage'></a> Restage or Restart Your Application
+###<a id='restage'></a> Restage or Restart Your App
 
-To enable your app to access the service instance, run `cf restage` or `cf restart` to restage or restart your application
+To enable your app to access the service instance, run `cf restage` or `cf restart` to restage or restart your app
 
 ##<a id='credentials'></a> Obtain Credentials for Accessing Your Service Instance
 
-After a service instance is bound to an application, the credentials of your Redis database are stored in the environment variables of the application. Run `cf env APP-NAME` to display the environment variables.
+After a service instance is bound to an app, the credentials of your Redis database are stored in the environment variables of the app. Run `cf env APP-NAME` to display the environment variables.
 
 You can find the credentials in the <a href="http://docs.pivotal.io/pivotalcf/devguide/deploy-apps/environment-variable.html#VCAP-SERVICES" target="_blank">VCAP_SERVICES</a> key.
 
@@ -84,7 +84,7 @@ You can use the host and password values to connect to your database with a Redi
 
 <p class="note warning"><strong>WARNING</strong> : Before deleting a service instance, you must backup data stored in your database. This operation cannot be undone and all the data is lost when the service is deleted.</p>
 
-Before you can delete a service instance, you must unbind it from all applications.
+Before you can delete a service instance, you must unbind it from all apps.
 
 ###<a id='list-instances'></a> List Available Services
 
@@ -100,11 +100,11 @@ name                 service       plan                   bound apps        last
 my-redis-service     a9s-redis     redis-single-small     a9s-redis-app     create succeeded
 </pre>
 
-This example shows that `my-redis-service` is bound to the `a9s-redis-app` application.
+This example shows that `my-redis-service` is bound to the `a9s-redis-app` app.
 
 ###<a id='unbind-instance'></a>Unbind a Service Instance
 
-Run `cf unbind-service` to unbind the service from your application:
+Run `cf unbind-service` to unbind the service from your app:
 
 <pre class="terminal">
 $ cf unbind-service a9s-redis-app my-redis-service
@@ -112,7 +112,7 @@ $ cf unbind-service a9s-redis-app my-redis-service
 
 ###<a id='delete-instance'></a> Delete a Service Instance
 
-After unbinding the service, it is no longer bound to an application. Run `cf delete-service` to delete the service:
+After unbinding the service, it is no longer bound to an app. Run `cf delete-service` to delete the service:
 
 <pre class="terminal">
 $ cf delete-service my-redis-service

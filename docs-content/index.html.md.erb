@@ -6,7 +6,7 @@ owner: Partners
 This documentation describes the a9s Redis for Pivotal Cloud Foundry (PCF) tile. a9s Redis for PCF
 enables on-demand provisioning of VM-based, dedicated Redis servers. Developers can
 create instances of a Redis server using Apps Manager or the Cloud Foundry Command Line
-interface (cf CLI) and bind these instances to an application.
+interface (cf CLI) and bind these instances to an app.
 
 <p class="note warning">
 <strong>IMPORTANT: </strong>
@@ -39,7 +39,7 @@ The current version of a9s Redis for PCF includes the following key features:
 | Feature | Benefit |
 |---------|---------|
 | **On­-Demand Service Instance Provisioning** | a9s Redis for PCF deploys Redis instances automatically. Developers can provision a single-VM Redis server using a single command. |
-| **Service Instance Isolation** | Each Redis server runs on a dedicated VM to ensure bad neighborhood protection in order to be aligned with enterprise security requirements.<br/><br/>a9s Redis for PCF uses Cloud Foundry security groups to prevent network connections being established by unauthorized applications.
+| **Service Instance Isolation** | Each Redis server runs on a dedicated VM to ensure bad neighborhood protection in order to be aligned with enterprise security requirements.<br/><br/>a9s Redis for PCF uses Cloud Foundry security groups to prevent network connections being established by unauthorized apps.
 | **Smoke Tests** | a9s Redis for PCF contains a post-deploy smoke tests errand that runs a series of basic test against your installation to ensure that it is configured properly. |
 | **Service Instance Capacity Upgrade** | Cloud Foundry Service Plan updates allow upgrades to the RAM, CPU, and storage capacity for your Redis instances. |
 | **Logging and Monitoring** | Each Redis service instance provides log messages and Redis-specific metrics to one or more `syslog/graphite` endpoints. You can configure the `syslog/graphite` endpoint to receive logging and monitoring information. |
