@@ -2,15 +2,6 @@
 title: Installing and Configuring a9s Redis for PCF
 owner: Partners
 ---
-<style>
-    .note.warning {
-        background-color: #fdd;
-        border-color: #fbb
-    }
-    .note.warning:before {
-        color: #f99;
-     }
-</style>
 
 This topic describes how to install and configure a9s Redis for PCF.
 
@@ -68,8 +59,8 @@ You should configure your network to balance cluster jobs across as many availab
 
 ###<a id='backup-manager'></a>Configure the Backup Manager
 
-Use **Backup settings** to enter the crendentials of the AWS account where the
-backup will be uploaded – this feature only supports AWS S3 at the moment.
+Use **Backup Settings** to enter the credentials of the AWS account where the
+backup will be uploaded. This feature only supports Amazon S3 at the moment.
 Leave those fields empty if you don't want to backup your data with the a9s Redis
 for PCF tile.
 
@@ -117,7 +108,8 @@ For more information, see [Understanding Lifecycle Errands](https://docs.pivotal
 
  * **Delete all a9s Redis instances**:
   This errand deletes all a9s Redis instances that were created with `cf create-service`.
-  <p class="note warning"><strong>WARNING</strong>: This task cannot be undone. All VMs of the service instances are permanently deleted. If a service instance is bound to an application or has existing service keys, the errand fails.</p>
+  <p class="note warning"><strong>WARNING</strong>: This task cannot be undone. All VMs of the service instances are permanently deleted.
+    If a service instance is bound to an app or has existing service keys, the errand fails.</p>
 
  * **Run Broker Deregistrar**:
   This errand unregisters the a9s Redis for PCF service broker in Elastic Runtime. It also removes the a9s Redis service from the Elastic Runtime marketplace.
@@ -228,8 +220,8 @@ Errand 'deployment-updater' completed successfully (exit code 0)
 
 ##<a id='interacting-with-the-backup-manager'></a> Trigger Backups and Restores on Demand
 
-<p class="note"><strong>Note</strong>: Note that the backup service will upload a
-  copy of your .rdb file to AWS, therefore backup will only work if your have RDB configured.
+<p class="note"><strong>Note</strong>: Note that the backup service uploads a
+  copy of your .rdb file to AWS, therefore backup only works if your have RDB configured.
   See <a href="./using.html#redis-persitence" target="_blank">Change RDB Persistence Settings</a> for more information. </p>
 
 Only PCF administrators can interact with the Backup Manager
@@ -257,7 +249,7 @@ $ curl backup:<password>&commat;172.28.9.29:3000/backup\_agent/backup -d "instan
 
 To restore, perform the following steps:
 
-3. Find the ID of the Backup and the
+3. Find the ID of the backup and the
 ID of the instance by listing the instances:
 <pre class="terminal">
 $ curl backup:<password>&commat;172.28.9.29:3000/instances
