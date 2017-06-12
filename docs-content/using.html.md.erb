@@ -8,7 +8,7 @@ This topic describes how to use a9s Redis for PCF after it has been successfully
 ##<a id='using'></a>Use a9s Redis for PCF with an App
 
 To use a9s Redis for PCF with an app, create a service instance and bind the service instance
-to your app. For more information on managing service instances, see <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html" target="_blank">Managing Service Instances with the cf CLI</a>.
+to your app. For more information about managing service instances, see <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html" target="_blank">Managing Service Instances with the cf CLI</a>.
 
 ###<a id='view-service'></a> View the a9s Redis for PCF Service
 
@@ -21,7 +21,7 @@ service      plans                                           description
 a9s-redis32  redis-single-small, redis-single-big            This is the anynines Redis 32 service.
 </pre>
 
-For more information on available service plans, see [Configure Service Plans](./installing.html#configure-service-instance).
+For more information about available service plans, see [Configure Service Plans](./installing.html#configure-service-instance).
 
 ###<a id='create-instance'></a> Create a Service Instance
 
@@ -31,7 +31,7 @@ To provision a Redis database, run `cf create-service`. For example.
 $ cf create-service a9s-redis32 redis-single-small my-redis-service
 </pre>
 
-Depending on your infrastructure and service broker utilization, it may take several minutes to create the service instance.
+Depending on your infrastructure and service broker utilization, it might take several minutes to create the service instance.
 
 Run the `cf services` command to view the creation status. This command displays a list of all your service instances. To view the status of a specific service instance, run `cf service NAME-OF-YOUR-SERVICE`.
 
@@ -45,7 +45,7 @@ $ cf bind-service a9s-redis-app my-redis-service
 
 ###<a id='restage'></a> Restage or Restart Your App
 
-To enable your app to access the service instance, run `cf restage` or `cf restart` to restage or restart your app
+To enable your app to access the service instance, run `cf restage` or `cf restart` to restage or restart your app.
 
 ##<a id='credentials'></a> Obtain Credentials for Accessing Your Service Instance
 
@@ -118,13 +118,15 @@ After unbinding the service, it is no longer bound to an app. Run `cf delete-ser
 $ cf delete-service my-redis-service
 </pre>
 
-It may take several minutes to delete the service. Deleting a service deprovisions the corresponding infrastructure resources.
+It might take several minutes to delete the service. Deleting a service deprovisions the corresponding infrastructure resources.
 Run the `cf services` command to view the deletion status.
 
 
 ##<a id='upgrade-service-plan'></a> Upgrade the Service Instance to another Service Plan
 
-Once created, you can upgrade your service instance to another, larger service plan. A larger service plan provides more CPU, RAM and storage. For more information, see the  <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html#update_service" target="_blank">Update a Service Instance</a> of the _Managing Service Instances with the cf CLI_ topic.
+Once created, you can upgrade your service instance to another, larger service plan.
+A larger service plan provides more CPU, RAM and storage.
+For more information, see the  <a href="http://docs.pivotal.io/pivotalcf/devguide/services/managing-services.html#update_service" target="_blank">Update a Service Instance</a> of the _Managing Service Instances with the cf CLI_ topic.
 
 <pre class="terminal">
 $ cf update-service my-redis-service -p a-bigger-plan
@@ -155,24 +157,24 @@ You can configure RDB according to the needs of your apps by providing customer 
   $ cf update-service my-redis-service -c {"snapshot": "['save 900 1', 'save 300 10']"}
 </pre>
 
-In this example, it will configure to snapshot Redis database according to the following rules:
+In this example, it configures to snapshot the Redis database according to the following rules:
 
 | Setting | Effect |
 |---------|--------|
 | save 900 1 | Create a snapshot after 900 seconds if 1 write operations occurred. |
 | save 300 10 | Create a snapshot after 300 seconds if 10 write operations occurred. |
 
-### Cache only
+### Cache Only
 You can disable snapshots and use Redis as cache only by creating the service with the following customer setting `-c '{"snapshot": "[]"}'`.
 
-The command would be:
+The command is:
 
 <pre class="terminal">
   $ cf update-service my-redis-service -c {"snapshot": "[]"}
 </pre>
 
 
-For more information see the snapshot settings in the documentation of <a href="https://redis.io/topics/persistence" target="_blank">Redis Persistence</a>.
+For more information, see the snapshot settings in the documentation of <a href="https://redis.io/topics/persistence" target="_blank">Redis Persistence</a>.
 
 ##<a id='add-graphite-endpoint'></a>Add a Graphite Endpoint
 
