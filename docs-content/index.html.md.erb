@@ -45,7 +45,7 @@ The current version of a9s Redis for PCF includes the following key features:
 | **Logging and Monitoring** | Each Redis service instance provides log messages and Redis-specific metrics to one or more `syslog/graphite` endpoints. You can configure the `syslog/graphite` endpoint to receive logging and monitoring information. |
 | **Deployment Updater** | This errand automatically updates the stemcell and all provisioned a9s Redis for PCF service instances to their lastest version. |
 | **Backup Manager** | The Backup Manager does regular backup of your instances and offers endpoints to backup instantly and restore backups. |
-| **Service Guard** | The Service Guard creates Cloud Foundry security groups for your service instance VMs.<br /><br /> When the IP address of a service instance changes, the guard updates the security group. The Service Guard also restarts the application instances bound to the affected service instance. **The instances of one application are restarted one by one to avoid downtime.**|
+| **Service Guard** | The Service Guard creates Cloud Foundry security groups for your service instance VMs.<br /><br /> When the IP address of a service instance changes, the guard updates the security group. The Service Guard also restarts the application instances bound to the affected service instance. **The instances of one app are restarted one by one to avoid downtime.**|
 | **Customazible Snapshots** | a9s Redis for PCF supports RDB persistence with point-in-time snapshots.<br />This setting can be changed by the user. |
 
 ### <a id='video'></a>Video Overview of a9s Redis for PCF
