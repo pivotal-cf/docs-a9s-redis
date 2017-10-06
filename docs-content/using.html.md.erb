@@ -17,8 +17,8 @@ After the tile is installed, you can see the `a9s-redis32` and its service plans
 $ cf marketplace
 Getting services from marketplace in org test / space test as admin...
 OK
-service      plans                                           description
-a9s-redis32  redis-single-small, redis-single-big            This is the anynines Redis 32 service.
+service        plans                                                                           description
+a9s-redis32    redis-single-small, redis-single-big, redis-cluster-small, redis-cluster-big    This is the anynines Redis 32 service.
 </pre>
 
 For more information about available service plans, see [Configure Service Plans](./installing.html#configure-service-instance).
@@ -135,7 +135,8 @@ $ cf update-service my-redis-service -p a-bigger-plan
 Here are the plans you can upgrade to depending on the one you are currently
 using:
 
-* If you are currently using the `redis-single-small`plan, you can upgrade to `redis-single-big`plan.
+* If you are currently using the `redis-single-small` plan, you can upgrade to `redis-single-big` plan.
+* If you are currently using the `redis-cluster-small` plan, you can upgrade to `redis-cluster-big` plan.
 
 ##<a id='redis-persitence'></a>Change RDB Persistence Settings
 
@@ -173,8 +174,58 @@ The command is:
   $ cf update-service my-redis-service -c {"snapshot": "[]"}
 </pre>
 
-
 For more information, see the snapshot settings in the documentation of <a href="https://redis.io/topics/persistence" target="_blank">Redis Persistence</a>.
+
+
+##<a id='redis-memory-policy'></a>Change Maxmemory Policy
+
+With the maxmemory\_policy, you can configure a9s Redis for PCF which key to
+remove when maxmemory is reached. Ther are several configurable behaviors.
+`noeviction` is the default.
+
+
+| Setting | Effect |
+|---------|--------|
+| volatile-lru | remove the key with an expire set using an LRU algorithm |
+| allkeys-lru | remove any key according to the LRU algorithm |
+| volatile-random | remove a random key with an expire set |
+| allkeys-random | remove a random key, any key |
+| volatile-ttl | remove the key with the nearest expire time (minor TTL) |
+| noeviction | don't expire at all, just return an error on write operations |
+
+
+You can use `-c {"maxmemory_policy": "volatile-ttl"}` to update the maxmemory-policy.
+
+<pre class="terminal">
+  $ cf update-service my-redis-service -c {"maxmemory_policy": "volatile-ttl"}
+</pre>
+
+For more information, see the maxmemory-policy settings in the self documented <a href="https://raw.githubusercontent.com/antirez/redis/3.2/redis.conf" target="_blank">redis.conf</a>.
+
+##<a id='redis-sentinel'></a>Redis Sentinel
+
+a9s Redis for PCF uses <a href="https://redis.io/topics/sentinel" target="_blank">Redis Sentinel</a> to provide a high available replication set.
+Redis Sentinel is monitoring the several nodes, takes care about the automatic failover and is able to send notifcation when something in the cluster is changing.
+
+a9s Redis for PCF provides two settings to adjust the cluster behaviour.
+`min_slaves_max_lag` and `down_after_milliseconds`
+
+| Setting | Effect |
+|---------|--------|
+| min\_slaves\_max\_lag | Time in seconds how long the master waits before he stops accepting writes when slaves are no more reachable. Default is 10 seconds. min-slaves-to-write can not be changed, it is fxed set to 1. See [redis.conf](https://raw.githubusercontent.com/antirez/redis/3.2/redis.conf) |
+| down\_after\_milliseconds | Number of milliseconds the master should be unreachable in order to consider it in S_DOWN state. Default is 30000 ms. See [sentinel.conf](http://download.redis.io/redis-stable/sentinel.conf) |
+
+
+<pre class="terminal">
+  $ cf update-service my-redis-service -c {"min_slaves_max_lag": "10"}
+</pre>
+
+
+<pre class="terminal">
+  $ cf update-service my-redis-service -c {"down_after_milliseconds": "30000"}
+</pre>
+
+
 
 ##<a id='add-graphite-endpoint'></a>Add a Graphite Endpoint
 
