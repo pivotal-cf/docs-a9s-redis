@@ -3,17 +3,14 @@ title: a9s Redis for PCF
 owner: Partners
 ---
 
-This documentation describes the a9s Redis for Pivotal Cloud Foundry (PCF) tile. a9s Redis for PCF
-enables on-demand provisioning of VM-based, dedicated Redis servers. Developers can
-create instances of a Redis server using Apps Manager or the Cloud Foundry Command Line
-interface (cf CLI) and bind these instances to an app.
-
-
-This documentation describes the a9s Redis for PCF tile.
+This documentation describes the a9s Redis for Pivotal Cloud Foundry (PCF) tile.
 
 <%= image_tag("a9s-redis-tile.png") %>
 
 ## <a id='overview'></a>Overview
+
+a9s Redis for PCF enables on-demand provisioning of VM-based, dedicated Redis servers and clusters.<br />
+a9s Redis for PCF is part of a number of a9s Data Services available in one Bundle. Visit the<a href="https://www.anynines.com/" target="_blank">anynines website</a> for more details. Developers can create instances of a Redis server or cluster using Apps Manager
 
 When you run the cf CLI ```create-service a9s-redis``` command,
 PCF creates dedicated VMs for this service instance. This allows
@@ -45,13 +42,14 @@ The current version of a9s Redis for PCF includes the following key features:
 | **Customazible Snapshots** | a9s Redis for PCF supports RDB persistence with point-in-time snapshots.<br />This setting can be <a href="./using.html#redis-persitence">changed by the user</a>. |
 | **High Availability** | a9s Redis for PCF ensures high-availability using <a href="./using.html#redis-sentinel">Redis Sentinel</a>.<br/><br/>The Consul-based internal DNS system provided by a9s Consul DNS for PCF ensures that the connected application always connects to a working node. The user can modify Sentinel related settings like min\_slaves\_max\_lag and down\_after\_milliseconds. |
 | **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the <a href="./using.html#redis-memory-policy">maxmemory_policy</a>. |
+| **Service Dashboard** | The Service Dashboard provides a single sign on and lets the user easily trigger backups. |
 
 ### <a id='video'></a>Video Overview of a9s Redis for PCF
 
 The following video provides an overview of how a9s Redis for PCF works.
 
 <p>
-  <iframe src="https://www.youtube.com/embed/Ku40qmrqsoo"
+  <iframe src="https://www.youtube.com/embed/90tKsTxLWlQ"
     width="656" height="372" frameborder="0" allowfullscreen></iframe>
 </p>
 
@@ -60,44 +58,36 @@ The following video provides an overview of how a9s Redis for PCF works.
 The following table provides version and version-support information about a9s Redis for PCF:
 
 <table class="nice">
-    <th>Element</th>
-    <th>Details</th>
-    <tr>
-        <td>Version</td>
-        <td>v1.0.0</td>
-    </tr>
-    <tr>
-        <td>Release date</td>
-        <td>October 6, 2017</td>
-    </tr>
-    <tr>
-        <td>Software component version</td>
-        <td>v3.2.8</td>
-    </tr>
-    <tr>
-        <td>Compatible Ops Manager version(s)</td>
-        <td>v1.7.x, v1.8.x, v1.9.x, and v1.10.x</td>
-    </tr>
-    <tr>
-        <td>Compatible Elastic Runtime version(s)</td>
-        <td>v1.7.x, v1.8.x, v1.9.x, and v1.10.x</td>
-    </tr>
-    <tr>
-        <td>IaaS support</td>
-        <td>AWS, OpenStack, and vSphere</td>
-    </tr>
-    <tr>
-        <td>IPsec support</td>
-        <td>No</td>
-    </tr>
+<th>Criteria</th>
+<th>Version and support information</th>
+ <tr>
+ <td>Version</td>
+ <td>v2.0.1</td>
+ </tr>
+ <tr>
+ <td>Release date</td>
+ <td>June 19, 2018</td>
+ </tr>
+ <tr>
+ <td>Compatible Ops Manager version(s)</td>
+ <td>v1.12.x, v2.0.x, and v2.1.x</td>
+ </tr>
+ <tr>
+ <td>Compatible Pivotal Application Service version(s)</td>
+ <td>v1.12.x, v2.0.x, and v2.1.x</td>
+ </tr>
+ <tr>
+ <td>IaaS support</td>
+ <td>AWS, Azure, GCP, OpenStack, and Vsphere</td>
+ </tr>
 </table>
+\* As of PCF v2.0, <em>Elastic Runtime</em> is renamed <em>Pivotal Application Service (PAS)</em>. 
 
-## <a id="reqs"></a>Requirements
+* This is a major release. Upgrades from a9s Redis for PCF v1.x are not supported. If you previously installed a9s Redis for PCF v1.x, uninstall it and install the latest version.
 
 To install and use a9s Redis for PCF, you must install the following products and tiles:
 
-* [a9s Consul DNS](https://network.pivotal.io/products/a9s-consul) for PCF, v1.0.0 or later
-* [a9s BOSH](https://network.pivotal.io/products/a9s-bosh) for PCF, v1.0.0 or later
+* Pivotal Application Service (formerly Elastic Runtime) v1.12 or later
 
 For more information, see [Installing and Configuring a9s Redis for PCF](./installing.html).
 
