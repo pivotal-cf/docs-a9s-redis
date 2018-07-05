@@ -7,31 +7,25 @@ This documentation describes the a9s Redis for Pivotal Cloud Foundry (PCF) tile.
 
 <%= image_tag("a9s-redis.png") %>
 
-## <a id='overview'></a>Overview
+
+## <a id='overview'></a> Overview
 
 a9s Redis for PCF enables on-demand provisioning of VM-based, dedicated Redis servers and clusters.<br />
-a9s Redis for PCF is part of a number of a9s Data Services available in one Bundle. Visit the<a href="https://www.anynines.com/" target="_blank">anynines website</a> for more details. Developers can create instances of a Redis server or cluster using Apps Manager
+a9s Redis for PCF is part of a number of a9s Data Services available in one Bundle. Visit the [anynines website](https://www.anynines.com/) for more details. Developers can create instances of a Redis server or cluster using Apps Manager.
 
-When you run the cf CLI ```create-service a9s-redis``` command,
-PCF creates dedicated VMs for this service instance. This allows
-the best possible bad neighborhood protection.
+When you run the cf CLI `create-service a9s-redis` command, PCF creates dedicated VMs for this service instance. This allows the best possible bad neighborhood protection.
 
-Redis service instance provisioning, including VM orchestration, is entirely automated.
-This enables service instances to be highly isolated and shielded by infrastructure virtualization
-mechanisms.
+Redis service instance provisioning, including VM orchestration, is entirely automated. This enables service instances to be highly isolated and shielded by infrastructure virtualization mechanisms.
 
-Due to the on-demand provisioning on VMs, only existing service
-instances allocate infrastructure resources. These resources are released when service
-instances are destroyed. Using on-demand provisioning the number of
-service instances is not limited by design.
+Due to the on-demand provisioning on VMs, only existing service instances allocate infrastructure resources. These resources are released when service instances are destroyed. Using on-demand provisioning the number of service instances is not limited by design.
 
-### <a></a>Current Features
+### <a id='current-features'></a> Current Features
 
 The current version of a9s Redis for PCF includes the following key features:
 
 | Feature | Benefit |
 |---------|---------|
-| **On­-Demand Service Instance Provisioning** | a9s Redis for PCF deploys Redis instances automatically. Developers can provision a single-VM Redis server using a single command. |
+| **On-Demand Service Instance Provisioning** | a9s Redis for PCF deploys Redis instances automatically. Developers can provision a single-VM Redis server using a single command. |
 | **Service Instance Isolation** | Each Redis server runs on a dedicated VM to ensure bad neighborhood protection in order to be aligned with enterprise security requirements.<br/><br/>a9s Redis for PCF uses Cloud Foundry security groups to prevent network connections being established by unauthorized apps.
 | **Smoke Tests** | a9s Redis for PCF contains a post-deploy smoke tests errand that runs a series of basic test against your installation to ensure that it is configured properly. |
 | **Service Instance Capacity Upgrade** | Cloud Foundry Service Plan updates allow upgrades to the RAM, CPU, and storage capacity for your Redis instances. |
@@ -39,12 +33,12 @@ The current version of a9s Redis for PCF includes the following key features:
 | **Deployment Updater** | This errand automatically updates the stemcell and all provisioned a9s Redis for PCF service instances to their lastest version. |
 | **Backup Manager** | The Backup Manager does regular backup of your instances and offers endpoints to backup instantly and restore backups. |
 | **Service Guard** | The Service Guard creates Cloud Foundry security groups for your service instance VMs.<br /><br /> When the IP address of a service instance changes, the guard updates the security group. The Service Guard also restarts the application instances bound to the affected service instance. **The instances of one app are restarted one by one to avoid downtime.**|
-| **Customazible Snapshots** | a9s Redis for PCF supports RDB persistence with point-in-time snapshots.<br />This setting can be <a href="./using.html#redis-persitence">changed by the user</a>. |
-| **High Availability** | a9s Redis for PCF ensures high-availability using <a href="./using.html#redis-sentinel">Redis Sentinel</a>.<br/><br/>The Consul-based internal DNS system provided by a9s Consul DNS for PCF ensures that the connected application always connects to a working node. The user can modify Sentinel related settings like min\_slaves\_max\_lag and down\_after\_milliseconds. |
-| **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the <a href="./using.html#redis-memory-policy">maxmemory_policy</a>. |
+| **Customazible Snapshots** | a9s Redis for PCF supports RDB persistence with point-in-time snapshots.<br />This setting can be [changed by the user](./using.html#redis-persitence). |
+| **High Availability** | a9s Redis for PCF ensures high-availability using [Redis Sentinel](./using.html#redis-sentinel).<br/><br/>The Consul-based internal DNS system provided by a9s Consul DNS for PCF ensures that the connected application always connects to a working node. The user can modify Sentinel related settings like min\_slaves\_max\_lag and down\_after\_milliseconds. |
+| **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the [maxmemory_policy](./using.html#redis-memory-policy). |
 | **Service Dashboard** | The Service Dashboard provides a single sign on and lets the user easily trigger backups. |
 
-### <a id='video'></a>Video Overview of a9s Redis for PCF
+### <a id='video'></a> Video Overview of a9s Redis for PCF
 
 The following video provides an overview of how a9s Redis for PCF works.
 
@@ -54,6 +48,8 @@ The following video provides an overview of how a9s Redis for PCF works.
 </p>
 
 ## <a id="snapshot"></a>Product Snapshot
+
+<p class='note'><strong>Note:</strong> As of PCF v2.0, Elastic Runtime is renamed Pivotal Application Service (PAS).</p>
 
 The following table provides version and version-support information about a9s Redis for PCF:
 
@@ -80,10 +76,9 @@ The following table provides version and version-support information about a9s R
  <td>IaaS support</td>
  <td>AWS, Azure, GCP, OpenStack, and Vsphere</td>
  </tr>
-</table>
-\* As of PCF v2.0, <em>Elastic Runtime</em> is renamed <em>Pivotal Application Service (PAS)</em>. 
+</table> 
 
-* This is a major release. Upgrades from a9s Redis for PCF v1.x are not supported. If you previously installed a9s Redis for PCF v1.x, uninstall it and install the latest version.
+<p class='note'><strong>Note:</strong> This is a major release. Upgrades from a9s Redis for PCF v1.x are not supported. If you previously installed a9s Redis for PCF v1.x, uninstall it and install the latest version.</p>
 
 To install and use a9s Redis for PCF, you must install the following products and tiles:
 
@@ -91,19 +86,16 @@ To install and use a9s Redis for PCF, you must install the following products an
 
 For more information, see [Installing and Configuring a9s Redis for PCF](./installing.html).
 
-## <a id="feedback"></a>Feedback and Support
 
-a9s Redis for PCF is an automation toolset for open source Redis.
-The entire anynines team can help your team  get started and be successful.
-Technical support, including a service level agreement, is available with a commercial license.
+## <a id="feedback"></a> Feedback and Support
 
-If your company has specific Redis administration policies or configuration best practises,
-the anynines team is happy to incorporate them, if applicable.
-Third-party Redis support organizations are also welcome to assist.
+a9s Redis for PCF is an automation toolset for open source Redis. The entire anynines team can help your team  get started and be successful. Technical support, including a service level agreement, is available with a commercial license.
 
-Contributions are welcome and will be investigated by the anynines team.
-Send any bugs, feature requests, or questions to <a href="mailto:dssupport@anynines.com">dssupport@anynines.com</a>.
+If your company has specific Redis administration policies or configuration best practises, the anynines team is happy to incorporate them, if applicable. Third-party Redis support organizations are also welcome to assist.
 
-## <a id='license'></a>License
+The anynines team welcomes all contributions. Send any bugs, feature requests, or questions to [dssupport@anynines.com](mailto:dssupport@anynines.com).
 
-Contact our <a href="mailto:dssupport@anynines.com">sales team</a> to learn more about commercial licenses and support.
+
+## <a id='license'></a> License
+
+Contact our [sales team](mailto:dssupport@anynines.com) to learn more about commercial licenses and support.
