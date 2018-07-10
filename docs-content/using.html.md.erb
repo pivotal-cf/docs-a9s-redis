@@ -63,9 +63,20 @@ System-Provided:
   "a9s-redis": [
    {
     "credentials": {
-     "host": "EXAMPLE-HOST",
-     "password": "EXAMPLE-PWD",
-     "port": 6379
+      "dns_servers": [
+        "172.28.10.22",
+        "172.28.11.11",
+        "172.28.12.11"
+      ],
+      "host": [
+        "d67901c.service.dc1.a9svs"
+      ],
+      "host_ip": [
+        "172.28.25.12"
+      ],
+      "port": 6379
+      "password": "a9s-brk-usr",
+      "username": "a9s-password"
     },
     "label": "a9s-redis",
     "name": "my-redis-service",
@@ -77,8 +88,10 @@ System-Provided:
 ...
 ´´´
 
-You can use the host and password values to connect to your database with a Redis client.
+You can use the host_ip, username and password values to connect to your database with a Redis client.
 
+a9s Redis for PCF comes with its own Consul cluster to provide hostname resolving. When your DNS is configured to resolve the a9s Redis for PCF service instance domains you can make use of `host`.
+For more information see <a href="./installing.html#name-resolving-with-consul" target="_blank">Name Resolving With Consul</a>.
 
 ## <a id='delete-an-a9s-redis-service-instance'></a> Delete an a9s Redis Service Instance
 
@@ -355,11 +368,20 @@ System-Provided:
    "a9s-redis": [
     {
       "credentials": {
-       "host": [
-        "d67901c.service.dc1.a9svs"
-       ],
-       "password": "a9s-brk-usr",
-       "username": "a9s-password"
+        "dns_servers": [
+          "172.28.10.22",
+          "172.28.11.11",
+          "172.28.12.11"
+        ],
+        "host": [
+          "d67901c.service.dc1.a9svs"
+        ],
+        "host_ip": [
+          "172.28.25.12"
+        ],
+        "port": 6379
+        "password": "a9s-brk-usr",
+        "username": "a9s-password"
      },
      "label": "a9s-redis",
      "name": "my-redis-service",
