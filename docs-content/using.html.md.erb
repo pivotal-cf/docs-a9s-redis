@@ -63,9 +63,20 @@ System-Provided:
   "a9s-redis": [
    {
     "credentials": {
-     "host": "EXAMPLE-HOST",
-     "password": "EXAMPLE-PWD",
-     "port": 6379
+      "dns_servers": [
+        "172.28.10.22",
+        "172.28.11.11",
+        "172.28.12.11"
+      ],
+      "host": [
+        "d67901c.service.dc1.a9svs"
+      ],
+      "host_ip": [
+        "172.28.25.12"
+      ],
+      "port": 6379
+      "password": "a9s-brk-usr",
+      "username": "a9s-password"
     },
     "label": "a9s-redis",
     "name": "my-redis-service",
@@ -77,8 +88,10 @@ System-Provided:
 ...
 ´´´
 
-You can use the host and password values to connect to your database with a Redis client.
+You can use the host_ip, username and password values to connect to your database with a Redis client.
 
+a9s Redis for PCF comes with its own Consul cluster to provide hostname resolving. When your DNS is configured to resolve the a9s Redis for PCF service instance domains you can make use of `host`.
+For more information see <a href="./installing.html#name-resolving-with-consul" target="_blank">Name Resolving With Consul</a>.
 
 ## <a id='delete-an-a9s-redis-service-instance'></a> Delete an a9s Redis Service Instance
 
@@ -221,7 +234,7 @@ If you want to monitor your service with Graphite, you can set an endpoint to wh
 Depending on your graphite provider, the `metrics_prefix` might require that each metric must start with an API key in their name. You can also change the interval within the data is send to the endpoint. To do this, modify `interval`; the default is 10s.
 
 ```bash
-$ cf update-service my-rabbitmq-service -c '{ "graphite": ["yourspace.your-graphite-endpoint.com:12345"], "metrics_prefix": "your-api-key.my-cluster-rabbitmq", "interval": "5"}'
+$ cf update-service my-redis-service -c '{ "graphite": ["yourspace.your-graphite-endpoint.com:12345"], "metrics_prefix": "your-api-key.my-cluster-redis", "interval": "5"}'
 ```
 
 
@@ -230,7 +243,7 @@ $ cf update-service my-rabbitmq-service -c '{ "graphite": ["yourspace.your-graph
 The `cf update-service` command used with the [-c flag](https://docs.cloudfoundry.org/devguide/services/managing-services.html#arbitrary-params-binding) can let you stream your syslog to a third-party service. In this case, the command expects a JSON string containing the `syslog` key. You can also change the interval for the syslog with the same key than for the graphite endpoint `interval`.
 
 ```bash
-$ cf update-service my-rabbitmq-service -c '{ "syslog": ["logs4.your-syslog-endpoint.com:54321"], "interval": "5" }'
+$ cf update-service my-redis-service -c '{ "syslog": ["logs4.your-syslog-endpoint.com:54321"], "interval": "5" }'
 ```
 
 
@@ -246,7 +259,7 @@ To understand Security Groups, see [Understanding Application Security Groups](h
 Run `cf service INSTANCE_NAME --guid` to get the guid of the service instance.
 
 ```bash
-$ cf service my-rabbitmq --guid
+$ cf service my-redis --guid
 ca16f111-5073-40b7-973a-156c75dd3028
 ```
 
@@ -275,22 +288,22 @@ was successfully created.
 
 ## <a id='backup-and-restore-service-instances'></a> Back Up and Restore Service Instances
 
-a9s RabbitMQ provides an easy way to create backups and restore if needed.
+a9s Redis provides an easy way to create backups and restore if needed.
 
 ### <a id='get-dashboard-address-login-and-authorize'></a> Get Dashboard Address, Log In, and Authorize
 
 1. Grap the dashboard URL with `cf service SERVICE-NAME`.
   ```bash
-  $cf service my-rabbitmq
+  $cf service my-redis
 
-  Service instance: my-rabbitmq
-  Service: a9s-rabbitmq
+  Service instance: my-redis
+  Service: a9s-redis
   Bound apps:
   Tags:
-  Plan: rabbitmq-single-small
-  Description: This is a service creating and managing dedicated RabbitMQ service instances and clusters, powered by the anynines Service Framework
+  Plan: redis-single-small
+  Description: This is a service creating and managing dedicated Redis service instances and clusters, powered by the anynines Service Framework
   Documentation url:
-  Dashboard: https://a9s-rabbitmq-dashboard.aws.ie.a9s.eu/service-instances/ca16f111-5073-40b7-973a-156c75dd3028
+  Dashboard: https://a9s-redis-dashboard.aws.ie.a9s.eu/service-instances/ca16f111-5073-40b7-973a-156c75dd3028
 
   Last Operation
   Status: update succeeded
@@ -355,11 +368,20 @@ System-Provided:
    "a9s-redis": [
     {
       "credentials": {
-       "host": [
-        "d67901c.service.dc1.a9svs"
-       ],
-       "password": "a9s-brk-usr",
-       "username": "a9s-password"
+        "dns_servers": [
+          "172.28.10.22",
+          "172.28.11.11",
+          "172.28.12.11"
+        ],
+        "host": [
+          "d67901c.service.dc1.a9svs"
+        ],
+        "host_ip": [
+          "172.28.25.12"
+        ],
+        "port": 6379
+        "password": "a9s-brk-usr",
+        "username": "a9s-password"
      },
      "label": "a9s-redis",
      "name": "my-redis-service",
