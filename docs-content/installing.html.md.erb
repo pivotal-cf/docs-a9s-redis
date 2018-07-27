@@ -176,8 +176,7 @@ To back up, do the following:
 <pre class="terminal">
 $ curl backup:53cr3t&commat;172.28.7.64:3000/backup\_agent/backup\_all -d {}
 </pre>
-or on a given instance with its GUID by calling the **/backup\_agent/backup**
-endpoint:
+or on a given instance with its GUID by calling the **/backup\_agent/backup** endpoint:
 <pre class="terminal">
 $ curl backup:53cr3t&commat;172.28.7.64:3000/backup\_agent/backup -d "instance\_guid=1c16933a-892f-4fe0-b968-ea0bf90246c9"
 </pre>
@@ -209,24 +208,22 @@ This command outputs an array composed of objects like this one:
   "id": 1
 }
 </pre>
-In the example above, backups and restores that have been performed for
-the instance with the instance\_id `1c16933a-892f-4fe0-b968-ea0bf90246c9`.
-This ID corresponds to the instance GUID from PCF.
+In the example above, backups and restores that have been performed for the instance with the instance\_id `1c16933a-892f-4fe0-b968-ea0bf90246c9`. This ID corresponds to the instance GUID from PCF.
 
-1. Restore the backup by calling the **/backup\_agent/restores**
-endpoint with the backup\_id and instance\_id as data:
+1. Restore the backup by calling the **/backup\_agent/restores** endpoint with the backup\_id and instance\_id as data:
 <pre class="terminal">
 $ curl backup:53cr3t&commat;172.28.7.64:3000/backup\_agent/restores -d "backup\_id=5" -d "instance\_id=1"
 </pre>
 
-##<a id='name-resolving-with-consul'></a>Name Resolving With Consul
+
+## <a id='name-resolving-with-consul'></a> Name Resolving With Consul
 
 a9s Redis for PCF comes with its own highly available Consul cluster for service discovery and service failover procedures.
 
-Consul is a HA service discovery and configuration tool, which includes features such as failure detection, an HA key/value store, and an HA DNS service that you can control through a HTTP-based REST interface.
+Consul is an HA service discovery and configuration tool, which includes features such as failure detection, an HA key/value store, and an HA DNS service that you can control through an HTTP-based REST interface.
 
-To make use of this feature you must talk to your administrator of your company's nameservers to setup a delegation of a9s Redis hostnames. The hostnames of these queries end with ` a9s-redis-consul` by default and must be delegated to the IP addresses of the consul server within the a9s Redis tile. To figure out the IP addresses check the status tab of the tile and look for `a9s Consul Cluster`.
+To make use of this feature, your nameserver administrator must set up a delegation of a9s Redis hostnames. The hostnames of these queries end with `a9s-redis-consul` by default and must be delegated to the IP addresses of the Consul server within the a9s Redis tile. To find the IP addresses, check the **Status** tab of the tile and look for `a9s Consul Cluster`.
 
 <%= image_tag("status_tab.png") %>
 
-For general information about Consul, see <a href="https://www.consul.io/" target="_blank">Consul by HashiCorp</a>.
+For more information about Consul, see [Consul by HashiCorp](https://www.consul.io/).
