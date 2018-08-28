@@ -37,6 +37,7 @@ The current version of a9s Redis for PCF includes the following key features:
 | **High Availability** | a9s Redis for PCF ensures high-availability using [Redis Sentinel](./using.html#redis-sentinel).<br/><br/>The Consul-based internal DNS system provided by a9s Consul DNS for PCF ensures that the connected application always connects to a working node. The user can modify Sentinel related settings like min\_slaves\_max\_lag and down\_after\_milliseconds. |
 | **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the [maxmemory_policy](./using.html#redis-memory-policy). |
 | **Service Dashboard** | The Service Dashboard provides a single sign on and lets the user easily trigger backups. |
+| **Default Syslog Endpoints for Instances** | In the tile a default endpoint for syslog and graphite can be configured for each service instances which is greated by the end user. |
 
 ### <a id='video'></a> Video Overview of a9s Redis for PCF
 
@@ -65,18 +66,18 @@ The following table provides version and version-support information about a9s R
  <td>June 19, 2018</td>
  </tr>
  <tr>
- <td>Compatible Ops Manager version(s)</td>
- <td>v1.12.x, v2.0.x, and v2.1.x</td>
- </tr>
- <tr>
- <td>Compatible Pivotal Application Service version(s)</td>
- <td>v1.12.x, v2.0.x, and v2.1.x</td>
+   <td>Compatible Ops Manager version(s)</td>
+   <td>v1.12.x, v2.0.x, v2.1.x, v2.2.x and v2.3.x</td>
+</tr>
+<tr>
+   <td>Compatible Pivotal Application Service version(s):</td>
+   <td>v1.12.x, v2.0.x, v2.1.x, v2.2.x and v2.3.x</td>
  </tr>
  <tr>
  <td>IaaS support</td>
  <td>AWS, Azure, GCP, OpenStack, and Vsphere</td>
  </tr>
-</table> 
+</table>
 
 <p class='note'><strong>Note:</strong> This is a major release. Upgrades from a9s Redis for PCF v1.x are not supported. If you previously installed a9s Redis for PCF v1.x, uninstall it and install the latest version.</p>
 
