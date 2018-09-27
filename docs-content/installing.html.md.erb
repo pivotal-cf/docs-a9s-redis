@@ -8,7 +8,7 @@ This topic describes how to install and configure a9s Redis.
 
 ## <a id='install'></a> Install a9s Redis
 
-To install a9s Redis, perform the following steps:
+To install a9s Redis, do the following:
 
 1. Download the product file from the [Pivotal Network](https://network.pivotal.io/products/a9s-redis).
 
@@ -60,7 +60,7 @@ VM large: 4 CPU, 8&nbsp;GB RAM, 30&nbsp;GB Disk
 
 ### <a id="backup_configuration"></a> Backup Configuration
 
-Use **Backup Configuration** to configure the backup endpoints. You can choose between a S3 compliant endpoint or an Azure blob store.
+Use **Backup Configuration** to configure the backup endpoints. You can choose between a S3-compliant endpoint or an Azure blob store.
 
 <%= image_tag("backup_configuration.png") %>
 
@@ -70,10 +70,9 @@ a9s Redis provides the possibility to stream the logs of the service components 
 
 <%= image_tag("syslog.png") %>
 
-###<a id="service_configuration"></a>Service Configuration
+### <a id="service_configuration"></a> Service Configuration
 
-At this page a default endpoint for graphite and syslog can be configured. This endpoints can not be deleted or updated by the user.
-F.e. `logs.papertrail.com:44456` for syslog.
+At this page, a default endpoint for Graphite and syslog can be configured. This endpoints cannot be deleted or updated by the user. For example, `logs.papertrail.com:44456` for syslog.
 
 <%= image_tag("service_configuration.png") %>
 
@@ -97,7 +96,7 @@ Use **Errands** to configure the lifecycle errands that run when you install or 
 * **Delete all a9s Redis instances**: This errand deletes all a9s Redis instances which were created with `cf create-service` by PCF end users.
 <p class="note warning"><strong>WARNING:</strong> This is an absoutly destructive task and cannot be undone. All VMs of the service instances will be deleted irrecoverably. In the case a service instance is bound to an app or service keys are existing, the errand will fail.</p>
 
-* **Run Broker Deregistrar**: This will deregister the a9s Redis service broker in Pivotal Application Services. This errand removes the Redis service from the Marketplace.
+* **Run Broker Deregistrar**: This deregisters the a9s Redis service broker in Pivotal Application Services. This errand removes the Redis service from the Marketplace.
 
 ### <a id='resource-config'></a> Configure Resources
 
