@@ -56,6 +56,8 @@ disk is likely to fail.
 
 #### <a id='min-reqs'></a> Minimum System Requirements
 
+| Resource | Size |
+|----------|------|
 | Disk nano | 2&nbsp;GB |
 | Disk small | 4&nbsp;GB |
 | Disk medium | 10&nbsp;GB |
@@ -80,7 +82,7 @@ between a S3 compliant endpoint and an Azure blob store.
   <th>Field</th>
   <th>Description</th>
   <tr>
-    <td>Minimum backups per Instance</td>
+    <td>Minimum Backups per Instance</td>
     <td>The minimum number of backups for any instance before the oldest backup
         is deleted.</td>
   </tr>
@@ -89,7 +91,7 @@ between a S3 compliant endpoint and an Azure blob store.
     <td>The number of days a backup must be stored before it can be deleted.</td>
   </tr>
   <tr>
-    <td>Number of workers</td>
+    <td>Number of Workers</td>
     <td>The amount of worker the rails puma server uses to operate. This is
         necessary because a download of a backup blocks one worker.</td>
   </tr>
@@ -138,7 +140,7 @@ between a S3 compliant endpoint and an Azure blob store.
   <th>Field</th>
   <th>Description</th>
   <tr>
-    <td>Minimum backups per Instance</td>
+    <td>Minimum Backups per Instance</td>
     <td>The minimum number of backups for any instance before the oldest backup is
         deleted.</td>
   </tr>
@@ -147,7 +149,7 @@ between a S3 compliant endpoint and an Azure blob store.
     <td>The number of days a backup must be stored before it can be deleted.</td>
   </tr>
   <tr>
-    <td>Number of workers</td>
+    <td>Number of Workers</td>
     <td>The amount of worker the rails puma server uses to operate. This is
         necessary because a download of a backup blocks one worker.</td>
   </tr>
@@ -192,26 +194,26 @@ syslog endpoint.
   <th>Description</th>
   </tr>
   <tr>
-    <td>Allow block automatic updates.</td>
+    <td>Allow Block Automatic Updates.</td>
     <td>Allow or forbid the Service Instance user to block automatic updates.
         If it`s not allowed the dashboard doesn't show this information.</td>
   </tr>
   <tr>
-    <td>Allow backup download</td>
+    <td>Allow Backup Download</td>
     <td>Allow the service instance user to download backups in the service dashboard.</td>
   </tr>
   <tr>
-    <td>Allow instance re-create</td>
+    <td>Allow Instance Re-create</td>
     <td>Allow the service instance user to recreate the service instance in the
         service dashboard.</td>
   </tr>
   <tr>
-    <td>Allow instance restart</td>
+    <td>Allow Instance Restart</td>
     <td>Allow the service instance user to restart the service instance in the
         service dashboard.</td>
   </tr>
   <tr>
-    <td>Minimum encryption key length</td>
+    <td>Minimum Encryption Key Length</td>
     <td>Minimum key length for the backup encryption keys defined by the application
         developer.</td>
   </tr>

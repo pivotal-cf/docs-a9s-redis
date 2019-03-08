@@ -47,11 +47,11 @@ The current version of a9s Redis for PCF includes the following key features:
 | **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the [maxmemory_policy](./using.html#redis-memory-policy). |
 | **Service Dashboard** | The Service Dashboard provides a single sign on and lets the user easily trigger backups. |
 | **Default Syslog Endpoints for Instances** | In the tile a default endpoint for syslog and Graphite can be configured for each service instances which is created by the end user. |
-| **Consul Domain configurable** | The consul domain can now be configured. |
+| **Consul Domain Configurable** | The consul domain can now be configured. |
 | **BOSH DNS Handler** | a9s BOSH DNS handler added to make a9s service instances accessible from Diego cells. |
 | **a9s-pg Backup** | Added backup option for a9s-pg. |
 | **Instance Sharing** | a9s Redis no supports instance sharing between orgs an spaces, see [documentation](https://docs.pivotal.io/pivotalcf/2-4/devguide/services/sharing-instances.html). |
-| **Update Xenial** | Update to Ubuntu Xenial stemcells. |
+| **Update to Xenial** | Upgrades the stemcell to Ubuntu Xenial. |
 
 ### <a id='video'></a> Video Overview of a9s Redis for PCF
 
@@ -77,7 +77,7 @@ Redis for PCF:
     </tr>
     <tr>
         <td>Release date</td>
-        <td>February 14, 2019</td>
+        <td>March 7, 2019</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
@@ -86,6 +86,10 @@ Redis for PCF:
     <tr>
         <td>Compatible Pivotal Application Service version(s):</td>
         <td>v2.1.x, v2.2.x, v2.3.x, and v2.4.x</td>
+    </tr>
+    <tr>
+        <td>BOSH stemcell version</td>
+        <td>Ubuntu Xenial</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -99,7 +103,7 @@ and earlier require a Ubuntu Trusty stemcell.
 The end-of-life date for Ubuntu Trusty is April 2019.
 If a security vulnerability is found on this stemcell after April, it will not be fixed.</p>
 
-<p class='note'><strong>Note:</strong> This is a major release. Upgrades from a9s
+<p class='note'><strong>Note:</strong> Upgrades from a9s
 Redis for PCF v1.x are not supported. If you previously installed a9s
 Redis for PCF v1.x, uninstall it and install the latest version.</p>
 
