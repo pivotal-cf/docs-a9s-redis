@@ -29,7 +29,6 @@ instances are destroyed. Using on-demand provisioning the number of service
 instances is not limited by design.
 
 ### <a id='current-features'></a> Current Features
-
 The current version of a9s Redis for PCF includes the following key features:
 
 | Feature | Benefit |
@@ -42,15 +41,15 @@ The current version of a9s Redis for PCF includes the following key features:
 | **Deployment Updater** | This errand automatically updates the stemcell and all provisioned a9s Redis for PCF service instances to their lastest version. |
 | **Backup Manager** | The Backup Manager does regular backup of your instances and offers endpoints to backup instantly and restore backups. |
 | **Service Guard** | The Service Guard creates Cloud Foundry security groups for your service instance VMs.<br /><br /> When the IP address of a service instance changes, the guard updates the security group. |
-| **Customazible Snapshots** | a9s Redis for PCF supports RDB persistence with point-in-time snapshots.<br />This setting can be [changed by the user](./using.html#redis-persitence). |
-| **High Availability** | a9s Redis for PCF ensures high-availability using [Redis Sentinel](./using.html#redis-sentinel).<br/><br/>The Consul-based internal DNS system provided by a9s Consul DNS for PCF ensures that the connected application always connects to a working node. The user can modify Sentinel related settings like min\_slaves\_max\_lag and down\_after\_milliseconds. |
-| **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the [maxmemory_policy](./using.html#redis-memory-policy). |
+| **Customazible Snapshots** | a9s Redis for PCF supports RDB persistence with point-in-time snapshots.<br />This setting can be [changed by the user](./using.html#change-rdb-persistence-settings). |
+| **High Availability** | a9s Redis for PCF ensures high-availability using [Redis Sentinel](./using.html#ha-cluster-with-redis-sentinel).<br/><br/>The Consul-based internal DNS system provided by a9s Consul DNS for PCF ensures that the connected application always connects to a working node. The user can modify Sentinel related settings like min\_slaves\_max\_lag and down\_after\_milliseconds. |
+| **Improved Memory Handling** | a9s Redis for PCF suports now a better memory handling. In addition, the user can modify the [maxmemory_policy](./using.html#change-maxmemory-policy). |
 | **Service Dashboard** | The Service Dashboard provides a single sign on and lets the user easily trigger backups. |
 | **Default Syslog Endpoints for Instances** | In the tile a default endpoint for syslog and Graphite can be configured for each service instances which is created by the end user. |
 | **Consul Domain Configurable** | The consul domain can now be configured. |
 | **BOSH DNS Handler** | a9s BOSH DNS handler added to make a9s service instances accessible from Diego cells. |
 | **a9s-pg Backup** | Added backup option for a9s-pg. |
-| **Instance Sharing** | a9s Redis no supports instance sharing between orgs an spaces, see [documentation](https://docs.pivotal.io/pivotalcf/2-4/devguide/services/sharing-instances.html). |
+| **Instance Sharing** | a9s Redis no supports instance sharing between orgs an spaces, see [documentation](https://docs.pivotal.io/pivotalcf/2-6/devguide/services/sharing-instances.html). |
 | **Update to Xenial** | Upgrades the stemcell to Ubuntu Xenial. |
 
 ### <a id='video'></a> Video Overview of a9s Redis for PCF
@@ -73,11 +72,11 @@ Redis for PCF:
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v2.1.2</td>
+        <td>v2.1.3</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>June 28, 2019</td>
+        <td>August 28, 2019</td>
     </tr>
     <tr>
       <td>Compatible Ops Manager version(s)</td>
