@@ -5,7 +5,72 @@ owner: Partners
 
 ## Provided Redis Versions
 
-Redis v3.2.12 and v4.0.13
+Redis v3.2.13 and v4.0.14
+
+## <a id="2-1-3"></a> v2.1.3
+
+**Release Date:** September 6th, 2019
+
+***Added***
+
+- a9s Redis: adds network relocation for redis, its now possible to move redis instances and clusters to another network
+- a9s Router: adds a9s Router service as a needed dependency for K8S deployments in future
+- a9s Dashboard API: Add endpoint to prepare a disaster recovery for a given
+  service instance.
+- all services: a9s Deployer: Use deployment name to create and find a deployment.
+- all services: a9s Backup Service: The metadata file is now encrypted and
+  contains additional information about the service instance and the used
+  filter_plugins in the a9s Backup Agent.
+- a9s Backup Service: The backup create request now returns also the id of the backup.
+
+***Fixed***
+
+- all services: a9s Service Dashboard API: Creation date of a backup in the
+  restore view gets shown properly.
+- all services: a9s Dashboard API: error message for encryption keys that are too short shows up again
+- all services: a9s Dashboard App: Updates `lodash` to version `4.17.14` to
+  resolve CVE.
+- all services: a9s Service Dashboard: Updates `node` version to `10.16`.
+- all services: a9s Backup Agent: Fix multipart upload.
+- a9s SSO Proxy: Added OAuth usage for POST, PATCH, PUT and DELETE methods.
+- all services: a9s Deployer: The a9s Deployer now properly catches and saves
+  the return values from the BOSH Director in case the BOSH Task fails.
+  Fetching instance information now properly returns the instance data with a
+  `failed` status instead of `422`.
+- a9s Backup Service: Fix migration of encryption key into a new column for
+  shorter encryption keys than the current limit.
+- a9s Backup Manager: Fix an issue where under special circumstances the backup
+  encryption key is not stored in the database.
+- a9s Backup Manager: Move database migration into a pre-start script to
+  mitigate timeout issue with the start script.
+- a9s Dashboard API: Replaced logger to redact sensitive data in logs.
+- a9s SSO-Proxy: The SSO-Proxy application returns now the HTTP Code
+  `401 unauthorized` if the CF Auth Token is expired or invalid.
+- all services: a9s Dashboard API: solve open CVE by updating the corresponding
+  libraries `eslint`, `shelljs`, `diff`, `express-basic-auth`, `lodash` and
+  `growl`.
+
+***Updated***
+
+- Stemcell: Update to BOSH stemcell version 315.x.
+- all services: a9s Service Broker: Using deployment name instead of deployment
+  id for the communication with the a9s BOSH Deployer.
+- all services: a9s BOSH Deployer: Use deployment names instead of deployment
+  ids in the outdated endpoint.
+- all services: a9s Service Dashboard: Replace AngularJS with React. In this
+  context we improved the UI of the a9s Service Dashboard. Please refer to the
+  [a9s Service Dashboard documentation](./a9s-service-dashboard.html)
+  for more details.
+- all services: a9s Service Dashboard: Per default deleted backups are not
+  displayed in the a9s Service Dashboard anymore.
+- all services: a9s Backup-Agent: Improve backup mechanism for backups bigger
+  than 1 GB and improve restore.
+- all services: a9s Service Broker: The a9a Service Broker requests
+  `available_updates` from the a9s Deployer only when the information is needed.
+
+***Removed***
+
+- a9s Redis: Disable network relocation support.
 
 ## <a id="2-1-2"></a> v2.1.2
 
@@ -130,7 +195,7 @@ bootstrap to 4.3.1
   from Diego cells.
 * A backup option is added for a9s-pg.
 * a9s Redis now supports instance sharing between orgs an spaces,
-  see [documentation](https://docs.pivotal.io/pivotalcf/2-4/devguide/services/sharing-instances.html).
+  see [documentation](https://docs.pivotal.io/pivotalcf/2-6/devguide/services/sharing-instances.html).
 * Upgrades the stemcell to Ubuntu Xenial.
 
 ## <a id="2-0-2"></a> v2.0.2
@@ -179,6 +244,6 @@ Features included in this release:
 
 * On-demand service instance provisioning
 * Service instance isolation
-* Smoke tests errand. See [Configure Errands](./installing.html#errands")
+* Smoke tests errand. See [Configure Errands](./installing.html#errands)
 * Service instance plan upgrade
 * Logging and monitoring
