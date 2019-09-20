@@ -15,7 +15,7 @@ To install a9s Redis, do the following:
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product**
   to upload the product file.
 
-1. Click **Add** or **+** (depending on the PCF version) next to the uploaded
+1. Click **Add** or **+** (depending on the Pivotal Platform version) next to the uploaded
   a9s Redis tile in the Ops Manager **Available Products** view to add it to your
   staging area.
 
@@ -33,7 +33,7 @@ To install a9s Redis, do the following:
 1. Click **Apply Changes** to deploy the service.
 
 After you install the a9s Redis, it is available in the list of Marketplace services.
-For more information, see [Using a9s Redis for PCF](./using.html).
+For more information, see [Using a9s Redis for Pivotal Platform](./using.html).
 
 ### <a id="azs"></a> Assign AZs and Networks
 
@@ -317,7 +317,7 @@ see [Errands](https://docs.pivotal.io/tiledev/tile-errands.html).
 #### <a id='pre-delete'></a> Pre-Delete Errands
 
 * **Delete all a9s Redis instances**: This errand deletes all a9s Redis instances
-  which were created with `cf create-service` by PCF end users.
+  which were created with `cf create-service` by Pivotal Platform end users.
   &nbsp;
   <p class="note warning"><strong>WARNING:</strong> This is an absolutely destructive
   task and cannot be undone. All VMs of the service instances are deleted
